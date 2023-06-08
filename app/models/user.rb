@@ -17,6 +17,7 @@ class User < ApplicationRecord
     # validates :name, presence: true
     # validates :username, presence: true, uniqueness: true
     # validates :password, presence: true, length: { minimum: 6 }
+    # validates :location, presence, true
 
     # Add avatar upload functionality
     has_one_attached :avatar
