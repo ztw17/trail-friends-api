@@ -7,11 +7,16 @@ Friendship.destroy_all
 # Users
 User.create(name: "Zach Weber", username: "ztw", email: "weberzt@email.co", password: BCrypt::Password.create("muirwoods"), location: "Denver, CO")
 User.create(name: "Paul Bramos", username: "pjb", email: "pauljb@email.co", password: BCrypt::Password.create("olympicnational"), location: "Denver, CO")
-User.create(name: "John Doe", username: "johnd", email: "doejohn@email.co", password: BCrypt::Password.create("verysecurepassword"), location: "Seattle, WA")
+User.create(name: "John Doe", username: "johnd", email: "doejohn@email.co", password: BCrypt::Password.create("verysecurepassword"), location: "Portland, OR")
 User.create(name: "Jane Smith", username: "janes", email: "smithjane@email.co", password: BCrypt::Password.create("verysecurepassword"), location: "Seattle, WA")
 
+user1 = User.first
+user2 = User.second
+user3 = User.third
+user4 = User.fourth
+
 # Friendships
-Friendship.create(user_id: 1, friend_id: 2)
-Friendship.create(user_id: 2, friend_id: 1)
-Friendship.create(user_id: 3, friend_id: 4)
-Friendship.create(user_id: 4, friend_id: 3)
+Friendship.create(user_id: user1.id, friend_id: user2.id)
+Friendship.create(user_id: user2.id, friend_id: user1.id)
+Friendship.create(user_id: user3.id, friend_id: user4.id)
+Friendship.create(user_id: user4.id, friend_id: user3.id)
