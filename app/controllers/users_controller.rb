@@ -2,22 +2,15 @@ class UsersController < ApplicationController
   before_action :set_user, only: %i[ show update destroy ]
 
   # GET /users
-  # def index
-  #   users = User.all
-  #   render json: users
-  # end
   def index
     @users = User.select(:id, :name, :email, :username)
     render json: @users
   end
 
   # GET /users/1
-  # def show
-  #   @user = User.find(params[:id])
-  #   render json: @user
-  # end
   def show
     @user = User.find(params[:id])
+    # temporary until avatar functionality is added
     render json: @user.as_json(except: [:avatar])
   end
 
@@ -54,6 +47,6 @@ class UsersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def user_params
-      params.require(:user).permit(:name, :email, :username, :password, :avatar)
+      params.require(:user).permit(:name, :email, :username, :password, :location)
     end
 end
