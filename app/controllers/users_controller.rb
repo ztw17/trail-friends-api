@@ -2,15 +2,23 @@ class UsersController < ApplicationController
   before_action :set_user, only: %i[ show update destroy ]
 
   # GET /users
+  # def index
+  #   users = User.all
+  #   render json: users
+  # end
   def index
-    @users = User.all
-
+    @users = User.select(:id, :name, :email, :username)
     render json: @users
   end
 
   # GET /users/1
+  # def show
+  #   @user = User.find(params[:id])
+  #   render json: @user
+  # end
   def show
-    render json: @user
+    @user = User.find(params[:id])
+    render json: @user.as_json(except: [:avatar])
   end
 
   # POST /users
