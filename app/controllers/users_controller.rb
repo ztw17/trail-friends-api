@@ -9,9 +9,9 @@ class UsersController < ApplicationController
 
   # GET /users/1
   def show
-    @user = User.find(params[:id])
+    @user = User.includes(:friendships).find(params[:id])
     # temporary until avatar functionality is added
-    render json: @user.as_json(except: [:avatar])
+    render json: @user, include: :friendships, except: [:avatar]
   end
 
   # POST /users
