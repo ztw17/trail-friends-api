@@ -4,8 +4,8 @@ class User < ApplicationRecord
     has_many :friendships
     has_many :friends, through: :friendships
     has_many :created_trails, :class_name => "Trail", :foreign_key => "creator_id"
-    has_many :trail_tags, through :trails
-    has_many :tags, through :trail_tags
+    has_many :trail_tags, through: :trails
+    has_many :tags, through: :trail_tags
 
     # users.password_hash in the database is a :string
     include BCrypt
